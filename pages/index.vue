@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Devmore</h1>
-    <p>{{ pages[0] }}</p>
+    <p>{{ pages }}</p>
   </div>
 </template>
 
