@@ -1,5 +1,5 @@
 <template>
-  <article v-if="post">
+  <article>
     <time>
       {{ new Date(post.date).toLocaleDateString("sv-SE") }} |
       {{ new Date(post.date).toLocaleTimeString("sv-SE").slice(0, -3) }}
@@ -17,9 +17,9 @@ export default {
       return this.$store.state.posts.find((el) => el.slug === this.slug);
     },
   },
-  async created() {
-    await this.$store.dispatch("getPosts");
-  },
+  //   async created() {
+  //     await this.$store.dispatch("getPosts");
+  //   },
   data() {
     return {
       slug: this.$route.params.slug,

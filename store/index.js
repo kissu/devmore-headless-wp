@@ -9,8 +9,8 @@ export const mutations = {
 };
 
 export const actions = {
-  async getPosts({ state, commit }) {
-    console.log("go");
+  //Dispatch on nuxt generate
+  async nuxtServerInit({ commit, state }) {
     if (state.posts.length) return;
     try {
       const posts = (
@@ -28,7 +28,6 @@ export const actions = {
         }));
       commit("updatePosts", posts);
     } catch (err) {
-      console.log("nope");
       console.log(err);
     }
   },
