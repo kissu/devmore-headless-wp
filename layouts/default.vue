@@ -19,6 +19,23 @@
       </b-collapse>
     </b-navbar>
     <nuxt />
+    <footer>
+      <p>
+        Vaniljgatan 14 <br />
+        410 22 Göteborg
+      </p>
+      <p>
+        <b-icon aria-hidden="true" class="mr-2" icon="telephone-fill" />
+        0701740633 <br />
+        <b-icon aria-hidden="true" class="mr-2" icon="envelope-fill" />
+        info@devmore.com
+      </p>
+      <p>
+        <b-icon class="mr-2" icon="instagram" scale="1.1" />
+        <b-icon class="mr-2" icon="linkedin" scale="1.1" />
+        <b-icon class="mr-2" icon="facebook" scale="1.1" />
+      </p>
+    </footer>
   </div>
 </template>
 
@@ -43,3 +60,40 @@ export default {
   },
 };
 </script>
+
+<style>
+main {
+  padding: 3rem;
+}
+
+section {
+  margin-bottom: 6rem !important;
+  margin-top: 3rem !important;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.dot {
+  display: none;
+}
+footer {
+  align-items: center;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+@media (max-width: 576px) {
+  footer {
+    flex-direction: column;
+  }
+
+  footer > p:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+}
+</style>
