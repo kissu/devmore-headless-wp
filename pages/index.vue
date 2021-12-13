@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- Header -->
     <b-carousel
       controls
       fade
@@ -29,7 +30,7 @@
     <main>
       <!-- Page content -->
       <section class="page-content text-center">
-        <div v-html="page.content.rendered" />
+        <div class="mb-5" v-html="page.content.rendered" />
         <b-button variant="info">Mer om oss</b-button>
       </section>
 
@@ -39,15 +40,31 @@
         <div class="posts-container">
           <b-card
             class="post-card mx-3"
-            :title="post.title.rendered"
-            img-src="https://picsum.photos/600/300/?image=25"
-            img-alt="Image"
+            :header="`${new Date(post.date).toLocaleDateString(
+              'sv-SE'
+            )} | ${new Date(post.date)
+              .toLocaleTimeString('sv-SE')
+              .slice(0, -3)}`"
+            header-tag="time"
+            :img-alt="
+              images.find((el) => el.id === post.featured_media).alt_text
+            "
+            :img-src="
+              images.find((el) => el.id === post.featured_media).media_details
+                .sizes.medium.source_url
+            "
             img-top
-            tag="article"
             :key="post.id"
+            tag="article"
+            :title="post.title.rendered"
             v-for="post in recentPosts"
           >
-            <div v-html="post.excerpt.rendered" />
+            <p class="mb-3">
+              <span class="tag" :key="tag" v-for="tag in post.tags">
+                {{ tags.find((el) => el.id === tag).name }}
+              </span>
+            </p>
+            <div class="text-left" v-html="post.excerpt.rendered" />
             <b-button :to="`/blogg/${post.slug}`" variant="info">
               Läs mer
             </b-button>
@@ -76,11 +93,17 @@ export default {
     return { heroImages };
   },
   computed: {
+    images() {
+      return this.$store.state.media;
+    },
     page() {
       return this.$store.state.pages.find((el) => el.slug === "start");
     },
     recentPosts() {
       return this.$store.state.posts.slice(0, 3);
+    },
+    tags() {
+      return this.$store.state.tags;
     },
   },
 };
@@ -101,6 +124,27 @@ export default {
   max-width: 20rem;
 }
 
+.post-card > img {
+  object-fit: cover;
+  width: 100%;
+  height: 10rem;
+}
+
+/* Customize Bootstrap Vue class */
+.card-header {
+  font-size: 0.9rem;
+  padding: 0;
+  margin: 1rem 0 -1rem;
+  background-color: #fff;
+  border-bottom: none;
+}
+
+.tag {
+  font-size: 0.9em;
+  font-style: italic;
+  font-weight: 500;
+  color: #6c757d;
+}
 @media (max-width: 1200px) {
   .posts-container {
     align-items: center;
@@ -109,7 +153,11 @@ export default {
 
   .post-card {
     max-width: 40rem;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .post-card > img {
+    height: 100%;
   }
 }
 </style>
