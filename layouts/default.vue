@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app">
     <b-navbar sticky toggleable="lg" type="light" variant="light">
       <b-navbar-brand style="font-size: 1.65rem" to="/">Devmore</b-navbar-brand>
 
@@ -62,6 +62,11 @@ export default {
 </script>
 
 <style>
+.app {
+  max-width: 1920px;
+  margin: auto;
+}
+
 main {
   padding: 3rem;
 }
