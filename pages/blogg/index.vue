@@ -50,18 +50,6 @@ export default {
     images() {
       return this.$store.state.media;
     },
-    items() {
-      return [
-        {
-          text: "Hem",
-          to: "/",
-        },
-        {
-          active: true,
-          text: "Blogg",
-        },
-      ];
-    },
     posts() {
       if (!this.activeTags.length) {
         return this.$store.state.posts;
@@ -78,6 +66,16 @@ export default {
   data() {
     return {
       activeTags: [],
+      items: [
+        {
+          text: "Hem",
+          to: "/",
+        },
+        {
+          active: true,
+          text: "Blogg",
+        },
+      ],
     };
   },
 };
