@@ -18,7 +18,7 @@
             ? 'Skräddarsydda IT-lösningar'
             : index === 1
             ? 'Vi skräddarsyr det optimala systemet för just ert företag'
-            : 'Hur vill ni optimera ert företag?'
+            : 'Vårt mål är att frigöra energi för ert företag'
         "
         :key="image.id"
         :img-src="image.media_details.sizes.full.source_url"
@@ -83,7 +83,9 @@
 export default {
   async asyncData({ $axios }) {
     const heroImages = (
-      await $axios.$get("http://localhost/devmore/wp-json/wp/v2/media")
+      await $axios.$get(
+        "http://localhost/devmore/wp-json/wp/v2/media?per_page=100"
+      )
     ).filter(
       (item) =>
         item.slug === "devmore" ||

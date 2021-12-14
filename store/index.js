@@ -60,7 +60,9 @@ export const actions = {
     if (state.posts.length) return;
     try {
       const [media, pages, posts, tags] = await Promise.all([
-        this.$axios.$get("http://localhost/devmore/wp-json/wp/v2/media"),
+        this.$axios.$get(
+          "http://localhost/devmore/wp-json/wp/v2/media?per_page=100"
+        ),
         this.$axios.$get("http://localhost/devmore/wp-json/wp/v2/pages"),
         this.$axios.$get("http://localhost/devmore/wp-json/wp/v2/posts"),
         this.$axios.$get("http://localhost/devmore/wp-json/wp/v2/tags"),
