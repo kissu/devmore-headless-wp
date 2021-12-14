@@ -18,6 +18,7 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
+
     <nuxt />
     <footer>
       <p>
@@ -80,9 +81,23 @@ h2 {
   text-align: center;
   margin-bottom: 2rem;
 }
+
+/* Custom styling of Bootstrap classes  */
+.breadcrumb {
+  background-color: transparent;
+  margin-top: -2rem;
+  margin-bottom: 2rem;
+}
+
+.badge {
+  font-weight: 500;
+}
+
 .dot {
   display: none;
 }
+/* ---------------------------- */
+
 footer {
   align-items: center;
   background-color: #f8f9fa;
