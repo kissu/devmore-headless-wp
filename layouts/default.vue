@@ -2,9 +2,7 @@
   <div class="app">
     <b-navbar sticky toggleable="lg" type="light" variant="light">
       <b-navbar-brand style="font-size: 1.65rem" to="/">Devmore</b-navbar-brand>
-
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
       <b-collapse id="nav-collapse" is-nav>
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
@@ -64,8 +62,11 @@ export default {
 
 <style>
 .app {
+  display: flex;
+  flex-direction: column;
   max-width: 1920px;
   margin: auto;
+  min-height: 100vh;
 }
 
 main {
@@ -80,6 +81,10 @@ section {
 h2 {
   text-align: center;
   margin-bottom: 2rem;
+}
+
+h1 {
+  font-weight: 400;
 }
 
 /* Custom styling of Bootstrap classes  */
@@ -104,6 +109,7 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: auto;
   padding: 2rem;
 }
 
