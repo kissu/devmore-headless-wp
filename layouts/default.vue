@@ -8,7 +8,7 @@
         <b-navbar-nav class="ml-auto">
           <b-nav-item
             :key="item.slug"
-            :to="item.slug"
+            :to="`/${item.slug}`"
             v-for="item in menuItems"
           >
             {{ item.title }}
