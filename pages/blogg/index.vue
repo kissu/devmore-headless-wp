@@ -20,7 +20,11 @@
         {{ new Date(post.date).toLocaleDateString("sv-SE") }} |
         {{ new Date(post.date).toLocaleTimeString("sv-SE").slice(0, -3) }}
       </time>
-      <h1>{{ post.title.rendered }}</h1>
+      <NuxtLink
+        class="d-block h1 text-dark title"
+        :to="`/blogg/${post.slug}`"
+        >{{ post.title.rendered }}</NuxtLink
+      >
       <b-badge
         class="tag mr-2 mb-2"
         :key="tag"
@@ -34,6 +38,9 @@
         v-html="post.content.rendered"
       />
     </article>
+    <b-alert class="no-posts-alert" show v-if="!posts.length">
+      Hoppsan! Det finns visst inga inlägg med denna tagg.
+    </b-alert>
   </main>
 </template>
 
@@ -81,6 +88,7 @@ export default {
   padding: 0 0.5rem;
 }
 
+.no-posts-alert,
 .blog-post {
   margin-bottom: 5rem;
 }
@@ -91,8 +99,13 @@ export default {
   margin: 2rem auto;
 }
 
+.no-posts-alert,
 .post-content {
   margin: auto;
   max-width: 60rem;
+}
+
+.title:hover {
+  text-decoration: none;
 }
 </style>
