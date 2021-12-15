@@ -2,41 +2,43 @@
   <main class="text-center">
     <b-breadcrumb :items="items" />
     <h1 class="mb-5">{{ page.title.rendered }}</h1>
-    <b-form class="form text-left" @submit.prevent="sendMessage">
+    <b-form
+      class="form text-left"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      method="post"
+      name="contact"
+    >
+      <input type="hidden" name="form-name" value="contact" />
       <b-form-group label="Namn" label-for="input-name">
-        <b-form-input
-          id="input-name"
-          placeholder="Namn"
-          required
-          v-model="messageInfo.name"
-        />
+        <b-form-input id="input-name" name="name" placeholder="Namn" required />
       </b-form-group>
 
       <b-form-group label="E-post" label-for="input-email">
         <b-form-input
           id="input-email"
+          name="email"
           placeholder="Exempel@email.com"
           required
-          v-model="messageInfo.email"
         />
       </b-form-group>
 
       <b-form-group label="Ämne" label-for="input-subject">
         <b-form-input
           id="input-subject"
+          name="subject"
           placeholder="Ämne"
           required
-          v-model="messageInfo.subject"
         />
       </b-form-group>
 
       <b-form-group label="Meddelande" label-for="message-textarea">
         <b-form-textarea
           id="message-textarea"
+          name="message"
           placeholder="Skriv ditt meddelande här"
           rows="3"
           max-rows="6"
-          v-model="messageInfo.message"
         />
       </b-form-group>
 
@@ -75,11 +77,6 @@ export default {
       },
       slug: this.$route.name,
     };
-  },
-  methods: {
-    sendMessage() {
-      console.log(this.messageInfo);
-    },
   },
 };
 </script>
