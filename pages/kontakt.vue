@@ -2,7 +2,6 @@
   <main class="text-center">
     <b-breadcrumb :items="items" />
     <h1 class="mb-5">{{ page.title.rendered }}</h1>
-    <h2>TEST</h2>
     <b-form class="form text-left" @submit.prevent="sendMessage">
       <b-form-group label="Namn" label-for="input-name">
         <b-form-input
