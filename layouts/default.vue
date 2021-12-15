@@ -17,7 +17,7 @@
       </b-collapse>
     </b-navbar>
 
-    <nuxt />
+    <Nuxt />
     <footer>
       <p>
         Vaniljgatan 14 <br />
