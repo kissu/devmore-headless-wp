@@ -1,6 +1,10 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: "static",
+  ssr: false,
+  generate: {
+    fallback: true,
+  },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -30,9 +34,5 @@ export default {
 
   bootstrapVue: {
     icons: true,
-  },
-
-  generate: {
-    fallback: true,
   },
 };
