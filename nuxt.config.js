@@ -31,4 +31,8 @@ export default {
   bootstrapVue: {
     icons: true,
   },
+
+  generate: {
+    fallback: true,
+  },
 };
